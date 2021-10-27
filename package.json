@@ -1,0 +1,34 @@
+{
+  "name": "WSIS Ontology",
+  "version": "1.0.0",
+  "description": "A project to define the ULTIMATE WISIS ontology",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "start:dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULTIMATE-DIGITAL-TOOLS/ontology.git"
+  },
+  "keywords": [
+    "ontology",
+    "WISIS"
+  ],
+  "author": "Aitor Corchero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULTIMATE-DIGITAL-TOOLS/ontology/issues"
+  },
+  "homepage": "https://github.com/ULTIMATE-DIGITAL-TOOLS/ontology#readme",
+  "dependencies": {
+    "jshint": "^2.13.0",
+    "n3": "^1.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
