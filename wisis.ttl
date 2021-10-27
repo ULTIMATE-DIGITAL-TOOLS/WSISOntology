@@ -1,4 +1,4 @@
-@prefix : <https://ultimatewater.eu/wisis/> .
+@prefix : <https://w3id.org/def/wsis> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -14,9 +14,9 @@
 @prefix schema: <http://schema.org/> .
 @prefix s4watr: <https://saref.etsi.org/saref4watr/> .
 @prefix wsis: <https://ultimatewater.eu/wisis/> .
-@base <https://ultimatewater.eu/wisis/> .
+@base <https://w3id.org/def/wsis> .
 
-<https://ultimatewater.eu/wisis/> rdf:type owl:Ontology ;
+<https://w3id.org/def/wsis> rdf:type owl:Ontology ;
                                       dcterms:title "ULTIMATE WISIS Ontology"@en ;
                                       dcterms:description "A WISIS ontology from exploring and interlinking industrial process variables between industries"@en ;
                                       dcterms:publisher <https://ultimatewater.eu/> ;
