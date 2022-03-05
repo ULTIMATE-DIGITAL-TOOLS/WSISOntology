@@ -141,14 +141,14 @@ geosp:sfWithin rdf:type owl:ObjectProperty ;
                rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql#> ;
                rdfs:label "sfWithin"@en .
 
-###  https://ultimatewater.eu/wisis/hasProcess
+###  https://w3id.org/def/wsis/hasProcess
 wsis:hasProcess rdf:type owl:ObjectProperty ;
-                  rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+                  rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
                   rdfs:label "hasProcess"@en .
 
-###  https://ultimatewater.eu/wisis/usesTechnology
+###  https://w3id.org/def/wsis/usesTechnology
 wsis:usesTechnology rdf:type owl:ObjectProperty ;
-                  rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+                  rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
                   rdfs:label "usesTechnology"@en .
 
 ###  https://saref.etsi.org/saref4watr/isDesignedFor
@@ -167,6 +167,27 @@ saref:hasProperty rdf:type owl:ObjectProperty ;
                   rdfs:isDefinedBy <https://saref.etsi.org/core/> ;
                   rdfs:label "has property"@en .
 
+###  https://saref.etsi.org/saref4city/hasKPI
+s4city:hasKPI rdf:type owl:ObjectProperty ;
+              rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+              owl:inverseOf s4city:isKPIOf ;
+              rdfs:label "has key performance indicator"@en .
+
+###  https://saref.etsi.org/saref4city/isKPIOf
+s4city:isKPIOf rdf:type owl:ObjectProperty ;
+               rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+               rdfs:label "is key performance indicator of"@en .
+
+###  https://saref.etsi.org/saref4city/hasCalculationPeriod
+s4city:hasCalculationPeriod rdf:type owl:ObjectProperty ;
+                            rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                            rdfs:label "has calculation period"@en .
+
+###  https://w3id.org/def/wsis/hasKPILevel
+wsis:hasKPILevel rdf:type owl:ObjectProperty ;
+                  rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+                  rdfs:label "hasKPILevel"@en .
+
 #################################################################
 #    Data properties
 #################################################################
@@ -180,7 +201,6 @@ saref:hasTimestamp rdf:type owl:DatatypeProperty ;
 saref:hasValue rdf:type owl:DatatypeProperty ;
                rdfs:isDefinedBy <https://saref.etsi.org/core/> ;
                rdfs:label "has value"@en .
-
 #################################################################
 #    Classes
 #################################################################
@@ -317,71 +337,71 @@ time:TemporalEntity rdf:type owl:Class ;
                     rdfs:isDefinedBy <http://www.w3.org/2006/time#> ;
                     rdfs:label "Temporal entity"@en .
 
-###  https://ultimatewater.eu/wisis/Industry
+###  https://w3id.org/def/wsis/Industry
 wsis:Industry rdf:type owl:Class ;
               rdfs:subClassOf [ rdf:type owl:Restriction ;
                                     owl:onProperty wsis:hasProcess ;
                                     owl:allValuesFrom wsis:Process ;
                                   ] ;
               rdf:comment "An industrial infrastructure"@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Industry"@en .
 
-###  https://ultimatewater.eu/wisis/SolutionProvider
+###  https://w3id.org/def/wsis/SolutionProvider
 wsis:SolutionProvider rdf:type owl:Class ;
               rdfs:subClassOf wsis:Industry ;
               rdf:comment "An industry in charge of providing specific solutions"@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Solution Provider"@en .
 
-###  https://ultimatewater.eu/wisis/ResourceConsumer
+###  https://w3id.org/def/wsis/ResourceConsumer
 wsis:ResourceConsumer rdf:type owl:Class ;
               rdfs:subClassOf wsis:Industry ;
               rdf:comment "An industry that consumes several resources"@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Resource Consumer"@en .
 
-###  https://ultimatewater.eu/wisis/ResourceProducer
+###  hhttps://w3id.org/def/wsis/ResourceProducer
 wsis:ResourceProducer rdf:type owl:Class ;
               rdfs:subClassOf wsis:Industry ;
               rdf:comment "An industry that produces several resources"@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Resource Producer"@en .
 
-###  https://ultimatewater.eu/wisis/Process
+###  https://w3id.org/def/wsis/Process
 wsis:Process rdf:type owl:Class ;
              rdfs:subClassOf [ rdf:type owl:Restriction ;
                                     owl:onProperty wsis:usesTechnology ;
                                     owl:allValuesFrom wsis:Technology ;
                                   ] ;
               rdf:comment "A process that involves the industry operation."@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Process"@en .
 
-###  https://ultimatewater.eu/wisis/Technology
+###  https://w3id.org/def/wsis/Technology
 wsis:Process rdf:type owl:Class ;
               rdf:comment "Technology used in the different industrial processes."@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Technology"@en .
 
-###  https://ultimatewater.eu/wisis/Resource
+###  https://w3id.org/def/wsis/Resource
 wsis:Resource rdf:type owl:Class ;
               rdf:comment "Resources consumed/generated by the industries."@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Resource"@en .
 
-###  https://ultimatewater.eu/wisis/Material
+###  https://w3id.org/def/wsis/Material
 wsis:Material rdf:type owl:Class ;
               rdfs:subClassOf wsis:Resource ;
               rdf:comment "Material based resource."@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Material"@en .
 
-###  https://ultimatewater.eu/wisis/Energy
+###  https://w3id.org/def/wsis/Energy
 wsis:Energy rdf:type owl:Class ;
               rdfs:subClassOf wsis:Resource ;
               rdf:comment "Energy based resource."@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Energy"@en .
 
 ###  https://saref.etsi.org/saref4watr/Water
@@ -401,28 +421,42 @@ s4watr:WaterProperty rdf:type owl:Class ;
                      rdfs:comment "Class to group those properties related to the water."@en ;
                      rdfs:label "Water property"@en .
 
-###  https://ultimatewater.eu/wisis/Salt
+###  https://w3id.org/def/wsis/Salt
 wsis:Salt rdf:type owl:Class ;
               rdfs:subClassOf wsis:Material ;
               rdf:comment "Salt based material."@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Salt"@en .
 
-###  https://ultimatewater.eu/wisis/RawWater
+###  https://w3id.org/def/wsis/RawWater
 wsis:RawWater rdf:type owl:Class ;
               rdfs:subClassOf s4watr:Water ;
               rdf:comment "Raw Water type of water."@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Raw Water"@en .
 
-###  https://ultimatewater.eu/wisis/WasteWater
+###  https://w3id.org/def/wsis/WasteWater
 wsis:RawWater rdf:type owl:Class ;
               rdfs:subClassOf s4watr:Water ;
               rdf:comment "Waste Water type of water."@en ;
-              rdfs:isDefinedBy <https://ultimatewater.eu/wisis/> ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Waste Water"@en .
+
+##  https://saref.etsi.org/saref4city/KeyPerformanceIndicator
+s4city:KeyPerformanceIndicator rdf:type owl:Class ;
+                               rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                 owl:onProperty s4city:hasCalculationPeriod ;
+                                                 owl:allValuesFrom time:TemporalDuration
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty s4city:isKPIOf ;
+                                                 owl:allValuesFrom saref:FeatureOfInterest
+                                               ] ;
+                               rdfs:comment "A Key Performance Indicator (KPI) is a type of performance measurement. KPIs evaluate the success of an organization or of a particular activity in which it engages. (Definition taken from FIWARE)"@en ;
+                               rdfs:label "Key Performance Indicator"@en ;
+                               rdfs:seeAlso <http://fiware-datamodels.readthedocs.io/en/latest/KeyPerformanceIndicator/doc/spec/index.html> .
 
 #################################################################
 #    Individuals
 #################################################################
-
