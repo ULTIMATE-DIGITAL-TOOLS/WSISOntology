@@ -1,0 +1,298 @@
+prefix : <https://aquaspice.eu/ontology/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix s4city: <https://saref.etsi.org/saref4city/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix s4syst: <https://saref.etsi.org/saref4syst/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix geosp: <http://www.opengis.net/ont/geosparql#> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+@prefix schema: <http://schema.org/> .
+@prefix s4watr: <https://saref.etsi.org/saref4watr/> .
+@prefix om: <http://www.ontology-of-units-of-measure.org/resource/om-2/> .
+@prefix wsis: <https://w3id.org/def/wsis/> .
+@prefix aquaspice: <https://aquaspice.eu/ontolog/> .
+@base <https://aquaspice.eu/ontology/> .
+
+
+
+<https://aquaspice.eu/ontolog/> rdf:type owl:Ontology ;
+                                      dcterms:title "WSIS Ontology Example at industrial level considering AQUASPICE-AGRICOLA Case Study"@en ;
+                                      dcterms:description "An example of the usage of the WSIS ontology performed under the AQUASPICE project."@en ;
+                                      dcterms:publisher <https://aquaspice.eu/> ;
+                                      dcterms:creator "Aitor Corchero";
+                                      owl:versionInfo "v0.0.1" ;
+                                      dcterms:modified "2022-03-05"^^xsd:date ;
+                                      dcterms:issued "2022-03-05"^^xsd:date ;
+                                      dcterms:license <https://opensource.org/licenses/ISC> ;
+                                      dcterms:source <https://github.com/ULTIMATE-DIGITAL-TOOLS/ontology> ;
+                                      vann:preferredNamespacePrefix "aquaspice" ;
+                                      vann:preferredNamespaceUri "https://aquaspice.eu/ontology/" .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://aquaspice.eu/ontology/Agricola
+aquaspice:Agricola rdf:type owl:NamedIndividual , 
+                           wsis:Industry;
+                  geosp:hasGeometry [
+                      rdf:type geosp:Geometry;
+                      geosp:asWKT "POLYGON((4.457359313964844,51.98086256213016 4.4769287109375,51.91039070988962 4.5764923095703125,51.894715259213626 4.586448669433593,51.95061343967185 4.557952880859375,51.98720594130118 4.457359313964844,51.98086256213016))"^^sf:wktLiteral
+                  ];
+                  wsis:generates aquaspice:WaterOperation, 
+                                 aquaspice:WaterScreening, 
+                                 aquaspice:WAS, 
+                                 aquaspice:RegenerationWaste;
+                  wsis:canProcess aquaspice:TratedWater;
+                  wsis:hasName "Agricola" .
+
+###  https://aquaspice.eu/ontology/AgricolaOperation
+aquaspice:AgricolaOperation rdf:type owl:NamedIndividual , 
+                                    wsis:ResourceProducer ;
+                            wsis:isPartOf ultimate:Agricola ;
+                            wsis:generates aquaspice:SemiSolidMaterial; 
+                            wsis:canProcess aquaspice:TratedWater, 
+                                            aquaspice:AirMixingTank123;
+                            wsis:usesTechnology aquaspice:PreScreening123, 
+                                                aquaspice:MixingTank, 
+                                                aquaspice:DAF,
+                                                aquaspice:TratmentPlant;
+                            wsis:hasName "Agricola Operation" .
+
+###  https://aquaspice.eu/ontology/PilotPlant
+aquaspice:PilotPlant rdf:type owl:NamedIndividual , 
+                                    wsis:ResourceProducer ;
+                            wsis:isPartOf ultimate:Agricola ;
+                            wsis:generates aquaspice:WAS, 
+                                           aquaspice:RegenerationWaste, 
+                                           aquaspice:TratedWater;
+                            wsis:canProcess aquaspice:TratedWater, 
+                                            aquaspice:AirMembrane;
+                            wsis:usesTechnology aquaspice:HoldingTank,
+                                                aquaspice:MembraneBioreactor,
+                                                aquaspice:IonExchange,
+                                                aquaspice:UV_H202;
+                            wsis:hasName "Pilot Plant" .
+
+###  https://aquaspice.eu/ontology/PreScreening123
+aquaspice:PreScreening123 rdf:type owl:NamedIndividual , 
+                                    wsis:Technology;
+                            wsis:generates aquaspice:WaterScreening ,
+                                           aquaspice:Water123 ; 
+                            wsis:canProcess aquaspice:WaterOperation ;
+                            wsis:hasName "Pre-Screening Technology".
+
+###  https://aquaspice.eu/ontology/WaterScreening
+aquaspice:WaterScreening rdf:type owl:NamedIndividual ,
+                               wsis:SemiSolidMaterial ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:MaterialProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "250"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://aquaspice.eu/ontology/Water123
+aquaspice:Water123 rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "200"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://aquaspice.eu/ontology/WaterOperation
+aquaspice:WaterOperation rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "150"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://aquaspice.eu/ontology/MixingTank
+aquaspice:MixingTank rdf:type owl:NamedIndividual , 
+                                    wsis:Technology;
+                            wsis:generates aquaspice:WaterMixingTank ;
+                            wsis:canProcess aquaspice:WaterScreening ;
+                            wsis:hasName "Mixing Tank".
+
+###  https://aquaspice.eu/ontology/WaterMixingTank123
+aquaspice:WaterMixingTank123 rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "180"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://aquaspice.eu/ontology/DAF
+aquaspice:DAF rdf:type owl:NamedIndividual , 
+                                    wsis:Technology;
+                            wsis:generates aquaspice:Sludge, 
+                                           aquaspice:WaterMixingTank1234;
+                            wsis:canProcess aquaspice:WaterMixingTank123,
+                                            aquaspice:AirMixingTank123 ;
+                            wsis:hasName "DAF".
+
+###  https://aquaspice.eu/ontology/WaterMixingTank1234
+aquaspice:WaterMixingTank1234 rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "175"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+###  https://aquaspice.eu/ontology/AirMixingTank123
+aquaspice:AirMixingTank123 rdf:type owl:NamedIndividual ,
+                               wsis:Air ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:AirProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "150"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://aquaspice.eu/ontology/Sludge
+aquaspice:Sludge rdf:type owl:NamedIndividual ,
+                               wsis:Material ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:MaterialProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "1.0"^^xsd:float ;
+                          saref:isMeasuredIn om:kilogram 
+                      ] .
+
+###  https://aquaspice.eu/ontology/TratmentPlant
+aquaspice:TratmentPlant rdf:type owl:NamedIndividual , 
+                                    wsis:Technology;
+                            wsis:canProcess aquaspice:WaterMixingTank1234,
+                                            aquaspice:Sludge ;
+                            wsis:hasName "Tratment Plant".
+
+###  https://aquaspice.eu/ontology/HoldingTank
+aquaspice:HoldingTank rdf:type owl:NamedIndividual , 
+                                    wsis:Technology;
+                            wsis:canProcess aquaspice:WaterMixingTank1234;
+                            wsis:generates aquaspice:WaterMixingTank12345;
+                            wsis:hasName "Holding Tank".
+
+###  https://aquaspice.eu/ontology/WaterMixingTank12345
+aquaspice:WaterMixingTank12345 rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "165"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://aquaspice.eu/ontology/MembraneBioreactor
+aquaspice:MembraneBioreactor rdf:type owl:NamedIndividual , 
+                                    wsis:Technology;
+                            wsis:canProcess aquaspice:WaterMixingTank12345, 
+                                            aquaspice:AirMembrane123;
+                            wsis:generates aquaspice:WAS, 
+                                           aquaspice:WaterBioreactor;
+                            wsis:hasName "Membrane Bioreactor".
+
+###  https://aquaspice.eu/ontology/AirMembrane
+aquaspice:AirMembrane rdf:type owl:NamedIndividual ,
+                               wsis:Air ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:AirProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "150"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://aquaspice.eu/ontology/WAS
+aquaspice:WAS rdf:type owl:NamedIndividual ,
+                               wsis:SolidMaterial ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:MaterialProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "1.0"^^xsd:float ;
+                          saref:isMeasuredIn om:kilogram 
+                      ] .
+
+###  https://aquaspice.eu/ontology/WaterBioreactor
+aquaspice:WaterBioreactor rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "165"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://aquaspice.eu/ontology/IonExchange
+aquaspice:IonExchange rdf:type owl:NamedIndividual , 
+                                    wsis:Technology;
+                            wsis:canProcess aquaspice:WaterBioreactor ;
+                            wsis:generates aquaspice:RegenerationWaste, 
+                                           aquaspice:WaterIon;
+                            wsis:hasName "Ion Exchange".
+
+###  https://aquaspice.eu/ontology/RegenerationWaste
+aquaspice:RegenerationWaste rdf:type owl:NamedIndividual ,
+                               wsis:Material ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:MaterialProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "1.0"^^xsd:float ;
+                          saref:isMeasuredIn om:kilogram 
+                      ] .
+###  https://aquaspice.eu/ontology/WaterIon
+aquaspice:WaterIon rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "265"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://aquaspice.eu/ontology/UV_H202
+aquaspice:UV_H202 rdf:type owl:NamedIndividual , 
+                                    wsis:Technology;
+                            wsis:canProcess aquaspice:WaterIon ;
+                            wsis:generates aquaspice:TratedWater ;
+                            wsis:hasName "UV_H202".
+
+###  https://aquaspice.eu/ontology/TratedWater
+aquaspice:TratedWater rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "105"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+
+
+

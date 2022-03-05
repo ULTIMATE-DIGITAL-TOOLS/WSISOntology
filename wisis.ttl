@@ -481,6 +481,20 @@ wsis:Material rdf:type owl:Class ;
               rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Material"@en .
 
+###  https://w3id.org/def/wsis/SolidMaterial
+wsis:SolidMaterial rdf:type owl:Class ;
+              rdfs:subClassOf wsis:Material ;
+              rdf:comment "Solid Material based resource."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Solid Material"@en .
+
+###  https://w3id.org/def/wsis/SemiSolidMaterial
+wsis:SemiSolidMaterial rdf:type owl:Class ;
+              rdfs:subClassOf wsis:Material ;
+              rdf:comment "Semi Solid Material based resource."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Semi Solid Material"@en .
+
 ###  https://w3id.org/def/wsis/Energy
 wsis:Energy rdf:type owl:Class ;
               rdfs:subClassOf saref:FeatureOfInterest ,
@@ -492,6 +506,18 @@ wsis:Energy rdf:type owl:Class ;
               rdf:comment "Energy based resource."@en ;
               rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Energy"@en .
+  
+###  https://w3id.org/def/wsis/Air
+wsis:Air rdf:type owl:Class ;
+              rdfs:subClassOf saref:FeatureOfInterest ,
+                              wsis:Resource ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty saref:hasProperty ;
+                               owl:allValuesFrom wsis:AirProperty
+                             ] ;
+              rdf:comment "Air based resource."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Air"@en .
 
 ###  https://saref.etsi.org/saref4watr/Water
 s4watr:Water rdf:type owl:Class ;
@@ -521,6 +547,12 @@ s4watr:MaterialProperty rdf:type owl:Class ;
                      rdfs:subClassOf saref:Property ;
                      rdfs:comment "Class to group those properties related to the material."@en ;
                      rdfs:label "Material property"@en .
+
+###  https://w3id.org/def/wsis/AirProperty
+s4watr:AirProperty rdf:type owl:Class ;
+                     rdfs:subClassOf saref:Property ;
+                     rdfs:comment "Class to group those properties related to the air resource."@en ;
+                     rdfs:label "Air property"@en .
 
 ###  https://w3id.org/def/wsis/Salt
 wsis:Salt rdf:type owl:Class ;
