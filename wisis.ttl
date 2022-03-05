@@ -186,7 +186,39 @@ s4city:hasCalculationPeriod rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/def/wsis/hasKPILevel
 wsis:hasKPILevel rdf:type owl:ObjectProperty ;
                   rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+                  owl:inverseOf wsis:isKPILevel ;
                   rdfs:label "hasKPILevel"@en .
+
+###  https://w3id.org/def/wsis/isKPILevel
+wsis:isKPILevel rdf:type owl:ObjectProperty ;
+                  rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+                  rdfs:label "isKPILevel"@en .
+
+###  https://saref.etsi.org/saref4city/assesses
+s4city:assesses rdf:type owl:ObjectProperty ;
+                rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                owl:inverseOf s4city:isAssessedBy ;
+                rdfs:label "assesses"@en .
+
+###  https://saref.etsi.org/saref4city/isAssessedBy
+s4city:isAssessedBy rdf:type owl:ObjectProperty ;
+                    rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                    rdfs:label "is assessed by"@en .
+
+###  https://saref.etsi.org/saref4city/isDerivedFrom
+s4city:isDerivedFrom rdf:type owl:ObjectProperty ;
+                     rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                     rdfs:label "is derived from"@en .
+
+###  https://saref.etsi.org/saref4city/quantifiesKPI
+s4city:quantifiesKPI rdf:type owl:ObjectProperty ;
+                     rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                     rdfs:label "quantifies KPI"@en .
+
+###  https://saref.etsi.org/saref4city/refersToTime
+s4city:refersToTime rdf:type owl:ObjectProperty ;
+                    rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                    rdfs:label "refers to time"@en .
 
 #################################################################
 #    Data properties
@@ -201,6 +233,27 @@ saref:hasTimestamp rdf:type owl:DatatypeProperty ;
 saref:hasValue rdf:type owl:DatatypeProperty ;
                rdfs:isDefinedBy <https://saref.etsi.org/core/> ;
                rdfs:label "has value"@en .
+
+##  https://saref.etsi.org/saref4city/hasCreationDate
+s4city:hasCreationDate rdf:type owl:DatatypeProperty ;
+                       rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                       rdfs:range xsd:dateTime ;
+                       rdfs:label "has creation date"@en .
+
+
+###  https://saref.etsi.org/saref4city/hasExpirationDate
+s4city:hasExpirationDate rdf:type owl:DatatypeProperty ;
+                         rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                         rdfs:range xsd:dateTime ;
+                         rdfs:label "has expiration date"@en .
+
+
+###  https://saref.etsi.org/saref4city/hasLastUpdateDate
+s4city:hasLastUpdateDate rdf:type owl:DatatypeProperty ;
+                         rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                         rdfs:range xsd:dateTime ;
+                         rdfs:label "has last update date"@en .
+
 #################################################################
 #    Classes
 #################################################################
@@ -392,14 +445,24 @@ wsis:Resource rdf:type owl:Class ;
 
 ###  https://w3id.org/def/wsis/Material
 wsis:Material rdf:type owl:Class ;
-              rdfs:subClassOf wsis:Resource ;
+              rdfs:subClassOf saref:FeatureOfInterest ,
+                              wsis:Resource ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty saref:hasProperty ;
+                               owl:allValuesFrom wsis:MaterialProperty
+                             ] ;
               rdf:comment "Material based resource."@en ;
               rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Material"@en .
 
 ###  https://w3id.org/def/wsis/Energy
 wsis:Energy rdf:type owl:Class ;
-              rdfs:subClassOf wsis:Resource ;
+              rdfs:subClassOf saref:FeatureOfInterest ,
+                              wsis:Resource ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty saref:hasProperty ;
+                               owl:allValuesFrom wsis:EnergyProperty
+                             ] ;
               rdf:comment "Energy based resource."@en ;
               rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
               rdfs:label "Energy"@en .
@@ -407,7 +470,7 @@ wsis:Energy rdf:type owl:Class ;
 ###  https://saref.etsi.org/saref4watr/Water
 s4watr:Water rdf:type owl:Class ;
              rdfs:subClassOf saref:FeatureOfInterest ,
-                             wsis:Material ,
+                             wsis:Resource ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty saref:hasProperty ;
                                owl:allValuesFrom s4watr:WaterProperty
@@ -420,6 +483,18 @@ s4watr:WaterProperty rdf:type owl:Class ;
                      rdfs:subClassOf saref:Property ;
                      rdfs:comment "Class to group those properties related to the water."@en ;
                      rdfs:label "Water property"@en .
+
+###  https://w3id.org/def/wsis/EnergyProperty
+s4watr:EnergyProperty rdf:type owl:Class ;
+                     rdfs:subClassOf saref:Property ;
+                     rdfs:comment "Class to group those properties related to the energy."@en ;
+                     rdfs:label "Energy property"@en .
+
+###  https://w3id.org/def/wsis/MaterialProperty
+s4watr:MaterialProperty rdf:type owl:Class ;
+                     rdfs:subClassOf saref:Property ;
+                     rdfs:comment "Class to group those properties related to the material."@en ;
+                     rdfs:label "Material property"@en .
 
 ###  https://w3id.org/def/wsis/Salt
 wsis:Salt rdf:type owl:Class ;
@@ -456,6 +531,134 @@ s4city:KeyPerformanceIndicator rdf:type owl:Class ;
                                rdfs:comment "A Key Performance Indicator (KPI) is a type of performance measurement. KPIs evaluate the success of an organization or of a particular activity in which it engages. (Definition taken from FIWARE)"@en ;
                                rdfs:label "Key Performance Indicator"@en ;
                                rdfs:seeAlso <http://fiware-datamodels.readthedocs.io/en/latest/KeyPerformanceIndicator/doc/spec/index.html> .
+
+
+###  https://w3id.org/def/wsis/ResourceOutput
+wsis:ResourceOutput rdf:type owl:Class ;
+              rdfs:subClassOf wsis:KeyPerformanceIndicator ;
+              rdf:comment "Indicators that refers to the rate of output of water, enervy or material."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Resource Output"@en .
+
+###  https://w3id.org/def/wsis/ResourceConsumption
+wsis:ResourceConsumption rdf:type owl:Class ;
+              rdfs:subClassOf wsis:KeyPerformanceIndicator ;
+              rdf:comment "Indicators that refers to the rate of consumption of water, enervy or material."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Resource Consumption"@en .
+
+###  https://w3id.org/def/wsis/ResourceUtilization
+wsis:ResourceUtilization rdf:type owl:Class ;
+              rdfs:subClassOf wsis:KeyPerformanceIndicator ;
+              rdf:comment "Indicators that refers to the rate of utilization of water, enervy or material."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Resource Utilization"@en .
+
+###  https://w3id.org/def/wsis/ResourceDisposal
+wsis:ResourceDisposal rdf:type owl:Class ;
+              rdfs:subClassOf wsis:KeyPerformanceIndicator ;
+              rdf:comment "Indicators that refers to the rate of disposal in relation to pollution."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Resource Disposal"@en .
+
+###  https://w3id.org/def/wsis/EnvironmentalImpacts
+wsis:EnvironmentalImpacts rdf:type owl:Class ;
+              rdfs:subClassOf wsis:KeyPerformanceIndicator ;
+              rdf:comment "Indicators that refers to environmental impacts."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Environmental Impacts"@en .
+
+###  https://w3id.org/def/wsis/SocialImpacts
+wsis:EnvironmentalImpacts rdf:type owl:Class ;
+              rdfs:subClassOf wsis:KeyPerformanceIndicator ;
+              rdf:comment "Indicators that refers to social impacts."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Social Impacts"@en .
+
+###  https://w3id.org/def/wsis/EconomicImpacts
+wsis:EnvironmentalImpacts rdf:type owl:Class ;
+              rdfs:subClassOf wsis:KeyPerformanceIndicator ;
+              rdf:comment "Indicators that refers to economic impacts."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Economic Impacts"@en .
+
+###  https://w3id.org/def/wsis/KeyPerformanceIndicatorLevel
+wsis:KeyPerformanceIndicatorLevel rdf:type owl:Class ;
+              rdfs:subClassOf [
+                    rdf:type owl:Restriction;
+                    owl:onProperty wsis:isKPILevel;
+                    owl:allValuesFrom s4city:KeyPerformanceIndicator
+              ];
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdf:comment "Level of the KPI considering the geographical impact."@en ;
+              rdfs:label "Key Performance Indicator Level"@en .
+
+###  https://w3id.org/def/wsis/MicroLevelIndicator
+wsis:MicroLevelIndicator rdf:type owl:Class ;
+              rdfs:subClassOf wsis:KeyPerformanceIndicatorLevel ;
+              rdf:comment "The indicators measure gate-to-gate performance from the technological cycles without Life Cycle Thinking approach, e.g. Recycling Rate."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Micro Level Indicator"@en .
+
+###  https://w3id.org/def/wsis/MesoLevelIndicator
+wsis:MesoLevelIndicator rdf:type owl:Class ;
+              rdfs:subClassOf wsis:KeyPerformanceIndicatorLevel ;
+              rdf:comment "Measure physical properties from the technological cycles with full or partial LCT approach, e.g. the indicator Reusability/Recyclability/Recoverability (RRR) in terms of mass includes the potential rate to reuse (products, components), recycle (materials), and recover (energy)."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Meso Level Indicator"@en .
+
+###  https://w3id.org/def/wsis/MacroLevelIndicator
+wsis:MacroLevelIndicator rdf:type owl:Class ;
+              rdfs:subClassOf wsis:KeyPerformanceIndicatorLevel ;
+              rdf:comment "evaluate, monitor, and improve policies regarding environmental, economic, and/or social concerns."@en ;
+              rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+              rdfs:label "Macro Level Indicator"@en .
+
+###  https://saref.etsi.org/saref4city/KeyPerformanceIndicatorAssessment
+s4city:KeyPerformanceIndicatorAssessment rdf:type owl:Class ;
+                                         rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
+                                         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                           owl:onProperty s4city:assesses ;
+                                                           owl:allValuesFrom saref:FeatureOfInterest
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty s4city:isAssessedBy ;
+                                                           owl:allValuesFrom s4city:Agent
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty s4city:isDerivedFrom ;
+                                                           owl:allValuesFrom saref:Measurement
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty saref:isMeasuredIn ;
+                                                           owl:allValuesFrom saref:UnitOfMeasure
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty s4city:quantifiesKPI ;
+                                                           owl:allValuesFrom s4city:KeyPerformanceIndicator
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty s4city:refersToTime ;
+                                                           owl:allValuesFrom time:TemporalEntity
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty s4city:hasCreationDate ;
+                                                           owl:allValuesFrom xsd:dateTime
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty s4city:hasExpirationDate ;
+                                                           owl:allValuesFrom xsd:dateTime
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty s4city:hasLastUpdateDate ;
+                                                           owl:allValuesFrom xsd:dateTime
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty saref:hasValue ;
+                                                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                         ] ;
+                                         rdfs:comment "A Key Performance Indicator assessment represents the assessment of a KPI calculated by a given agent in a given time."@en ;
+                                         rdfs:label "Key performance indicator assessment"@en .
 
 #################################################################
 #    Individuals
