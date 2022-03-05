@@ -663,3 +663,142 @@ s4city:KeyPerformanceIndicatorAssessment rdf:type owl:Class ;
 #################################################################
 #    Individuals
 #################################################################
+
+###  https://w3id.org/def/wsis/OutputMainMineralResource
+wsis:OutputMainMineralResource rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceOutput ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor wsis:Material ;
+                        s4watr:isIntendedFor wsis:Material ;
+                        rdfs:comment "Indicator related to Output of the main mineral reosurce"@en ;
+                        rdfs:label "Output Main Mineral Resource"@en .
+
+###  https://w3id.org/def/wsis/OutputEnergy
+wsis:OutputEnergy rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceOutput ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor wsis:Energy ;
+                        s4watr:isIntendedFor wsis:Energy ;
+                        rdfs:comment "Indicator related to Output of energy"@en ;
+                        rdfs:label "Output Energy"@en .
+
+###  https://w3id.org/def/wsis/OutputWaterResource
+wsis:OutputWaterResource rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceOutput ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor s4watr:Water ;
+                        s4watr:isIntendedFor s4watr:Water ;
+                        rdfs:comment "Indicator related to Output of Water Resource"@en ;
+                        rdfs:label "Output Water Resource"@en .
+
+###  https://w3id.org/def/wsis/OutputLand
+wsis:OutputLand rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceOutput ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor s4watr:Material ;
+                        s4watr:isIntendedFor s4watr:Material ;
+                        rdfs:comment "Indicator related to Output of Land"@en ;
+                        rdfs:label "Output Land"@en .
+
+###  https://w3id.org/def/wsis/EnergyConsumptionIndicator
+wsis:EnergyConsumptionIndicator rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceConsumption ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor s4watr:Energy ;
+                        s4watr:isIntendedFor s4watr:Energy ;
+                        rdfs:comment "Indicator related to Energy Consumption per unit key product"@en ;
+                        rdfs:label "Energy Consumption Indicator"@en .
+
+###  https://w3id.org/def/wsis/WaterConsumptionIndicator
+wsis:WaterConsumptionIndicator rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceConsumption ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor s4watr:Water ;
+                        s4watr:isIntendedFor s4watr:Water ;
+                        rdfs:comment "Indicator related to Water Consumption per unit key product"@en ;
+                        rdfs:label "Water Consumption Indicator"@en .
+
+###  https://w3id.org/def/wsis/RecyclingSolidWasteWaterRate
+wsis:RecyclingRate rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceUtilization ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor s4watr:Material ;
+                        s4watr:isIntendedFor s4watr:Material ;
+                        s4watr:isDesignedFor s4watr:Water ;
+                        s4watr:isIntendedFor s4watr:Water ;
+                        rdfs:comment "Indicator related to recycling rate of solid waste or wastewater"@en ;
+                        rdfs:label "Recycling Rate"@en .
+
+###  https://w3id.org/def/wsis/WaterReuse
+wsis:WaterReuse rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceUtilization ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor s4watr:Water ;
+                        s4watr:isIntendedFor s4watr:Water ;
+                        rdfs:comment "Indicator related to water reuse ratio. "@en ;
+                        rdfs:label "Water Reuse"@en .
+
+###  https://w3id.org/def/wsis/RecyclingRateMaterials
+wsis:RecyclingRateMaterials rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceUtilization ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor s4watr:Material ;
+                        s4watr:isIntendedFor s4watr:Material ;
+                        rdfs:comment "Indicator related to recycling rate of materials. "@en ;
+                        rdfs:label "Recycling Rate Materials"@en .
+
+###  https://w3id.org/def/wsis/TotalAmountSolidWaste
+wsis:TotalAmountSolidWaste rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceDisposal ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor s4watr:Water ;
+                        s4watr:isIntendedFor s4watr:Water ;
+                        s4watr:isDesignedFor s4watr:Material ;
+                        s4watr:isIntendedFor s4watr:Material ;
+                        rdfs:comment "Indicator related to total amount of solid waste for disposal. "@en ;
+                        rdfs:label "Total Amount Solid Waste"@en .
+
+###  https://w3id.org/def/wsis/TotalAountWastewaterDischarge
+wsis:TotalAountWastewaterDischarge rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceDisposal ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor s4watr:Water ;
+                        s4watr:isIntendedFor s4watr:Water ;
+                        s4watr:isDesignedFor s4watr:Material ;
+                        s4watr:isIntendedFor s4watr:Material ;
+                        rdfs:comment "Indicator related to total amount of wastewater discharge. "@en ;
+                        rdfs:label "Total Aount Wastewater Discharge"@en .
+
+###  https://w3id.org/def/wsis/EmissionsProduced
+wsis:EmissionsProduced rdf:type owl:NamedIndividual ,
+                                        wsis:ResourceDisposal ;
+                        wsis:hasKPILevel wsis:MicroLevelIndicator ;
+                        wsis:hasKPILevel wsis:MesoLevelIndicator ;
+                        wsis:hasKPILevel wsis:MacroLevelIndicator ;
+                        s4watr:isDesignedFor s4watr:Water ;
+                        s4watr:isIntendedFor s4watr:Water ;
+                        rdfs:comment "Indicator related to Emisions Produced (e.g. CO2). "@en ;
+                        rdfs:label "Emissions Produced"@en .
+
