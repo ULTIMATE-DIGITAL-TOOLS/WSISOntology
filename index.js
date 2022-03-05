@@ -3,6 +3,6 @@ const fs = require('fs')
 
 const parser = new N3.Parser();
 
-const rdfStream = fs.createReadStream('./ontology/wisis.ttl');
+const rdfStream = fs.createReadStream('./wisis.ttl');
 
 parser.parse(rdfStream, console.log);
