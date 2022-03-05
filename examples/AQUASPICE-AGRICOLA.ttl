@@ -1,4 +1,4 @@
-prefix : <https://aquaspice.eu/ontology/> .
+@prefix : <https://aquaspice.eu/ontology/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -54,7 +54,7 @@ aquaspice:Agricola rdf:type owl:NamedIndividual ,
 ###  https://aquaspice.eu/ontology/AgricolaOperation
 aquaspice:AgricolaOperation rdf:type owl:NamedIndividual , 
                                     wsis:ResourceProducer ;
-                            wsis:isPartOf ultimate:Agricola ;
+                            wsis:isPartOf aquaspice:Agricola ;
                             wsis:generates aquaspice:SemiSolidMaterial; 
                             wsis:canProcess aquaspice:TratedWater, 
                                             aquaspice:AirMixingTank123;
@@ -67,7 +67,7 @@ aquaspice:AgricolaOperation rdf:type owl:NamedIndividual ,
 ###  https://aquaspice.eu/ontology/PilotPlant
 aquaspice:PilotPlant rdf:type owl:NamedIndividual , 
                                     wsis:ResourceProducer ;
-                            wsis:isPartOf ultimate:Agricola ;
+                            wsis:isPartOf aquaspice:Agricola ;
                             wsis:generates aquaspice:WAS, 
                                            aquaspice:RegenerationWaste, 
                                            aquaspice:TratedWater;

@@ -370,7 +370,7 @@ ultimate:GreenHouse123 rdf:type owl:NamedIndividual ,
                                            ultimate:Energy1235 , 
                                            ultimate:ColdWaterSample1234 ,
                                            ultimate:Energy1234; 
-                            wsis:canProcess ultimate:HotWater1234 ,
+                            wsis:canProcess ultimate:HotWater1234, 
                                             ultimate:ColdWater1235;
                             wsis:hasName "Greeen House 123" .
 
