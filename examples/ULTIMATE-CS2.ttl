@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/def/wsis> .
+@prefix : <https://w3id.org/def/wsis/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -13,21 +13,412 @@
 @prefix sf: <http://www.opengis.net/ont/sf#> .
 @prefix schema: <http://schema.org/> .
 @prefix s4watr: <https://saref.etsi.org/saref4watr/> .
-@prefix wsis: <https://w3id.org/def/wsis> .
+@prefix om: <http://www.ontology-of-units-of-measure.org/resource/om-2/> .
+@prefix wsis: <https://w3id.org/def/wsis/> .
 @prefix ultimate: <https://ultimatewater.eu/ontology/> .
-@base <https://ultimatewater.eu/ontology/> .
+@base <https://ultimatewater.eu/ontolog/> .
+
 
 
 <https://ultimatewater.eu/ontology/> rdf:type owl:Ontology ;
-                                      dcterms:title "ULTIMATE WISIS Ontology"@en ;
-                                      dcterms:description "A WISIS ontology from exploring and interlinking industrial process variables between industries"@en ;
+                                      dcterms:title "WSIS Ontology Example of CS2 from ULTIMATE project"@en ;
+                                      dcterms:description "An example of the usage of the WSIS ontology performed under the ULTIMATE project."@en ;
                                       dcterms:publisher <https://ultimatewater.eu/> ;
                                       dcterms:creator "Aitor Corchero";
-                                      owl:versionIRI <https://w3id.org/def/wsis/v0.0.1/> ;
+                                      owl:versionIRI <https://ultimatewater.eu/ontology/v0.0.1/> ;
                                       owl:versionInfo "v0.0.1" ;
-                                      dcterms:modified "2021-07-05"^^xsd:date ;
-                                      dcterms:issued "2021-07-05"^^xsd:date ;
+                                      dcterms:modified "2022-03-05"^^xsd:date ;
+                                      dcterms:issued "2022-03-05"^^xsd:date ;
                                       dcterms:license <https://opensource.org/licenses/ISC> ;
                                       dcterms:source <https://github.com/ULTIMATE-DIGITAL-TOOLS/ontology> ;
-                                      vann:preferredNamespacePrefix "wsis" ;
-                                      vann:preferredNamespaceUri "https://w3id.org/def/wsis" .
+                                      vann:preferredNamespacePrefix "ultimate" ;
+                                      vann:preferredNamespaceUri "https://ultimatewater.eu/ontology" .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://ultimatewater.eu/ontology#WestLand
+ultimate:WestLand rdf:type owl:NamedIndividual , 
+                           wsis:Industry;
+                  geosp:hasGeometry [
+                      rdf:type geosp:Geometry;
+                      geosp:asWKT "POLYGON((4.457359313964844,51.98086256213016 4.4769287109375,51.91039070988962 4.5764923095703125,51.894715259213626 4.586448669433593,51.95061343967185 4.557952880859375,51.98720594130118 4.457359313964844,51.98086256213016))"^^sf:wktLiteral
+                  ]; 
+                  wsis:hasName "West Land" .
+ 
+###  https://ultimatewater.eu/ontology#GreenHouseComplex
+ultimate:GreenHouseComplex rdf:type owl:NamedIndividual , 
+                                    wsis:ResourceProducer;
+                            wsis:isPartOf ultimate:WestLand;
+                            wsis:hasName "Greeen House Complex" .
+
+###  https://ultimatewater.eu/ontology#GreenHouseComplex
+ultimate:GreenHouseComplex rdf:type owl:NamedIndividual , 
+                                    wsis:ResourceProducer;
+                            wsis:isPartOf ultimate:WestLand;
+                            geosp:hasGeometry [
+                                rdf:type geosp:Geometry;
+                                geosp:asWKT "POLYGON((4.457359313964844,51.98086256213016 4.4769287109375,51.91039070988962 4.5764923095703125,51.894715259213626 4.586448669433593,51.95061343967185 4.557952880859375,51.98720594130118 4.457359313964844,51.98086256213016))"^^sf:wktLiteral
+                            ]; 
+                            wsis:generates  ultimate:ROWater12345 ,
+                                            ultimate:SaltA12345,
+                                            ultimate:WaterA123456, 
+                                            ultimate:WaterB123456, 
+                                            ultimate:SaltB12345, 
+                                            ultimate:ColdWaterSample1234, 
+                                            ultimate:HotWaterSample1234 ;
+                            wsis:canProcess ultimate:IWSample1234 ;
+                            wsis:hasProcess ultimate:NutrientReuse ;
+                            wsis:hasName "Greeen House Complex" .
+
+###  https://ultimatewater.eu/ontology#ROWater12345
+ultimate:ROWater12345 rdf:type owl:NamedIndividual ,
+                               s4watr:WasteWater ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "250"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#SaltA12345
+ultimate:SaltA12345 rdf:type owl:NamedIndividual ,
+                               wsis:Salt ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:MaterialProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "1.2"^^xsd:float ;
+                          saref:isMeasuredIn om:kilogram 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#WaterA123456
+ultimate:WaterA123456 rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "200"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#WaterB123456
+ultimate:WaterB123456 rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "205"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#SaltB12345
+ultimate:SaltB12345 rdf:type owl:NamedIndividual ,
+                               wsis:Salt ; 
+                      saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:MaterialProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "1.5"^^xsd:float ;
+                          saref:isMeasuredIn om:kilogram 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#ColdWaterSample1234
+ultimate:ColdWaterSample1234 rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                        saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "125"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                        ] .
+
+###  https://ultimatewater.eu/ontology#HotWaterSample1234
+ultimate:HotWaterSample1234 rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                        saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "175"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                        ] .
+
+###  https://ultimatewater.eu/ontology#IWSample1234
+ultimate:IWSample1234 rdf:type owl:NamedIndividual ,
+                               s4watr:Water ; 
+                        saref:hasMeasurement [
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "250"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                        ] .
+
+###  https://ultimatewater.eu/ontology#NutrientReuse
+ultimate:NutrientReuse rdf:type owl:NamedIndividual ,
+                               wsis:Process ;
+                        wsis:usesTechnology ultimate:GreenHouse123,
+                                            ultimate:TreatmentProcess,
+                                            ultimate:RO,
+                                            ultimate:NovelElectrolisis,
+                                            ultimate:Disinfection ;
+                        wsis:hasName "Nutrient Reuse" .
+
+###  https://ultimatewater.eu/ontology#GreenHouse123
+ultimate:GreenHouse123 rdf:type owl:NamedIndividual ,
+                               wsis:Technology ;
+                        wsis:canProcess ultimate:IWSample1234 ;
+                        s4watr:isIntendedFor ultimate:Agriculture ;
+                        s4watr:isDesignedFor ultimate:RawWater ;
+                        wsis:generates ultimate:WWSample1234 .
+
+###  https://ultimatewater.eu/ontology#Agriculture
+ultimate:Agriculture rdf:type owl:NamedIndividual ,
+                              s4watr:WaterUse ;
+                     wsis:hasName "Agriculture" .
+
+###  https://ultimatewater.eu/ontology#WWSample1234
+ultimate:WWSample1234 rdf:type owl:NamedIndividual, 
+                               s4watr:WasteWater ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "150"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#TreatmentProcess
+ultimate:TreatmentProcess rdf:type owl:NamedIndividual ,
+                                   wsis:Technology ;
+                          wsis:canProcess ultimate:WWSample1234 ;
+                          wsis:generates ultimate:WWTSample1234 .
+
+###  https://ultimatewater.eu/ontology#WWTSample1234
+ultimate:WWTSample1234 rdf:type owl:NamedIndividual, 
+                               s4watr:WasteWater ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "155"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#RO
+ultimate:RO rdf:type owl:NamedIndividual ,
+                     wsis:Technology ;
+            wsis:canProcess ultimate:WWTSample1234 ;
+            wsis:generates ultimate:ROWater12345 ;
+            wsis:generates ultimate:ConcentrateA1234 .
+
+###  https://ultimatewater.eu/ontology#ConcentrateA1234
+ultimate:ConcentrateA1234 rdf:type owl:NamedIndividual, 
+                               wsis:Material ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:MaterialProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "1.55"^^xsd:float ;
+                          saref:isMeasuredIn om:kilogram 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#NovelElectrolisis
+ultimate:NovelElectrolisis rdf:type owl:NamedIndividual ,
+                     wsis:Technology ;
+            wsis:canProcess ultimate:ConcentrateA1234 ;
+            wsis:canProcess ultimate:WWTSample1234 ;
+            wsis:generates  ultimate:SaltA12345 ;
+            wsis:generates  ultimate:ConcentrateB1234 ;
+            wsis:generates  ultimate:SaltB1234 ;
+            wsis:generates  ultimate:ConcentrateC1234 .
+
+###  https://ultimatewater.eu/ontology#ConcentrateB1234
+ultimate:ConcentrateB1234 rdf:type owl:NamedIndividual, 
+                               wsis:Material ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:MaterialProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "1.53"^^xsd:float ;
+                          saref:isMeasuredIn om:kilogram 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#SaltB1234
+ultimate:SaltB1234 rdf:type owl:NamedIndividual, 
+                               wsis:Material ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:MaterialProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "1.53"^^xsd:float ;
+                          saref:isMeasuredIn om:kilogram 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#ConcentrateC1234
+ultimate:ConcentrateC1234 rdf:type owl:NamedIndividual, 
+                               wsis:Material ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:MaterialProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "1.51"^^xsd:float ;
+                          saref:isMeasuredIn om:kilogram 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#Disinfection
+ultimate:Disinfection rdf:type owl:NamedIndividual ,
+                     wsis:Technology ;
+            wsis:canProcess ultimate:ConcentrateC1234 ;
+            wsis:canProcess ultimate:ConcentrateB1234 ;
+            wsis:generates  ultimate:WaterA123456, 
+                            ultimate:WaterB123456 .
+
+###  https://ultimatewater.eu/ontology#Warmtewisselaar
+ultimate:Warmtewisselaar rdf:type owl:NamedIndividual , 
+                                    wsis:ResourceProducer;
+                            wsis:isPartOf ultimate:WestLand;
+                            geosp:hasGeometry [
+                                rdf:type geosp:Geometry;
+                                geosp:asWKT "POLYGON((4.457359313964844,51.98086256213016 4.4769287109375,51.91039070988962 4.5764923095703125,51.894715259213626 4.586448669433593,51.95061343967185 4.557952880859375,51.98720594130118 4.457359313964844,51.98086256213016))"^^sf:wktLiteral
+                            ];
+                            wsis:generates ultimate:Energy1235,  
+                                           ultimate:Energy1234;
+                            wsis:hasProcess ultimate:HotEnergyExtractionSummer, 
+                                            ultimate:HotEnergyExtractionWinter .
+
+###  https://ultimatewater.eu/ontology#HotEnergyExtractionSummer
+ultimate:HotEnergyExtractionSummer rdf:type owl:NamedIndividual , 
+                                    wsis:Process ;
+                                    wsis:usesTechnology ultimate:HotWaterWell, 
+                                                        ultimate:HotPipe123, 
+                                                        ultimate:GreenHouse123, 
+                                                        ultimate:ColdPipe123, 
+                                                        ultimate:ColdWaterWell;
+                                    wsis:hasName "Hot Energy Extraction Summer" .
+
+###  https://ultimatewater.eu/ontology#HotEnergyExtractionWinter
+ultimate:HotEnergyExtractionWinter rdf:type owl:NamedIndividual , 
+                                    wsis:Process ;
+                                    wsis:usesTechnology ultimate:HotWaterWell, 
+                                                        ultimate:HotPipe123, 
+                                                        ultimate:GreenHouse123, 
+                                                        ultimate:ColdPipe123, 
+                                                        ultimate:ColdWaterWell;
+                                    wsis:hasName "Hot Energy Extraction Winter" .
+
+###  https://ultimatewater.eu/ontology#HotWaterWell
+ultimate:HotWaterWell rdf:type owl:NamedIndividual , 
+                      wsis:Technology ;
+                      wsis:canProcess ultimate:HotWater1235 ;
+                      wsis:generates ultimate:HotWater1234 ;
+                      wsis:hasName "Hot Water Well" .
+
+###  https://ultimatewater.eu/ontology#HotWater1235
+ultimate:HotWater1235 rdf:type owl:NamedIndividual, 
+                               s4watr:Water ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "90"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#HotWater1234
+ultimate:HotWater1234 rdf:type owl:NamedIndividual, 
+                               s4watr:Water ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "85"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#HotPipe123
+ultimate:HotPipe123 rdf:type owl:NamedIndividual , 
+                      wsis:Technology ;
+                      wsis:canProcess ultimate:HotWater1235 ;
+                      wsis:generates ultimate:HotWater1235 ;
+                       wsis:canProcess ultimate:HotWater1234 ;
+                      wsis:generates ultimate:HotWater1234 ;
+                      wsis:hasName "Hot Pipe 123" .
+
+###  https://ultimatewater.eu/ontology#ColdWater1235
+ultimate:ColdWater1235 rdf:type owl:NamedIndividual, 
+                               s4watr:Water ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "95"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+##  https://ultimatewater.eu/ontology#GreenHouse123
+ultimate:GreenHouse123 rdf:type owl:NamedIndividual , 
+                                    wsis:ResourceProducer;
+                            wsis:isPartOf ultimate:GreenHouseComplex;
+                            wsis:generates ultimate:HotWater1235 , 
+                                           ultimate:Energy1235 , 
+                                           ultimate:ColdWaterSample1234 ,
+                                           ultimate:Energy1234; 
+                            wsis:canProcess ultimate:HotWater1234 ,
+                                            ultimate:ColdWater1235;
+                            wsis:hasName "Greeen House 123" .
+
+###  https://ultimatewater.eu/ontology#Energy1235 
+ultimate:Energy1235 rdf:type owl:NamedIndividual, 
+                               wsis:Energy ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:EnergyFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "95"^^xsd:float ;
+                          saref:isMeasuredIn om:kilowattHour 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#Energy1234
+ultimate:Energy1234 rdf:type owl:NamedIndividual, 
+                               wsis:Energy ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty wsis:EnergyFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "85"^^xsd:float ;
+                          saref:isMeasuredIn om:kilowattHour 
+                      ] .
+
+##  https://ultimatewater.eu/ontology#ColdPipe123
+ultimate:ColdPipe123 rdf:type owl:NamedIndividual , 
+                      wsis:Technology ;
+                      wsis:canProcess ultimate:ColdWater1235 ;
+                      wsis:generates ultimate:ColdWater1235 ;
+                      wsis:canProcess ultimate:ColdWater1234 ;
+                      wsis:generates ultimate:ColdWater1234 ;
+                      wsis:hasName "Cold Pipe 123" .
+
+###  https://ultimatewater.eu/ontology#ColdWater1234
+ultimate:ColdWater1234 rdf:type owl:NamedIndividual, 
+                               s4watr:Water ;
+                      saref:hasMeasurement [ 
+                          rdf:type saref:Measurement ;
+                          saref:relatesToProperty s4watr:WaterFlowProperty ;
+                          saref:hasTimestamp "2022-03-06T21:01:30" ^^xsd:dateTime ;
+                          saref:hasValue "93"^^xsd:float ;
+                          saref:isMeasuredIn om:cubicMetre 
+                      ] .
+
+###  https://ultimatewater.eu/ontology#ColdWaterWell
+ultimate:ColdWaterWell rdf:type owl:NamedIndividual , 
+                      wsis:Technology ;
+                      wsis:generates ultimate:ColdWater1235 ;
+                      wsis:canProcess ultimate:ColdWater1234 ;
+                      wsis:hasName "Cold Water Well" .

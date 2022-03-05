@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/def/wsis> .
+@prefix : <https://w3id.org/def/wsis/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -13,10 +13,11 @@
 @prefix sf: <http://www.opengis.net/ont/sf#> .
 @prefix schema: <http://schema.org/> .
 @prefix s4watr: <https://saref.etsi.org/saref4watr/> .
-@prefix wsis: <https://w3id.org/def/wsis> .
-@base <https://w3id.org/def/wsis> .
+@prefix wsis: <https://w3id.org/def/wsis/> .
+@prefix om: <http://www.ontology-of-units-of-measure.org/resource/om-2/> .
+@base <https://w3id.org/def/wsis/> .
 
-<https://w3id.org/def/wsis> rdf:type owl:Ontology ;
+<https://w3id.org/def/wsis/> rdf:type owl:Ontology ;
                                       dcterms:title "Water Smart Industrial Symbiosis (WSIS) Ontology"@en ;
                                       dcterms:description "An ontology as a catalyst for Water Smart Industrial Symbiosis (WSIS), in which water/wastewater plays a key role within a dynamic socio-economic and business oriented industrial ecosystem"@en ;
                                       dcterms:publisher <https://ultimatewater.eu/> ;
@@ -146,6 +147,16 @@ wsis:hasProcess rdf:type owl:ObjectProperty ;
                   rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
                   rdfs:label "hasProcess"@en .
 
+###  https://w3id.org/def/wsis/generates
+wsis:generates rdf:type owl:ObjectProperty ;
+                  rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+                  rdfs:label "generates"@en .
+
+###  https://w3id.org/def/wsis/canProcess
+wsis:canProcess rdf:type owl:ObjectProperty ;
+                  rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+                  rdfs:label "canProcess"@en .
+
 ###  https://w3id.org/def/wsis/usesTechnology
 wsis:usesTechnology rdf:type owl:ObjectProperty ;
                   rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
@@ -234,6 +245,16 @@ saref:hasValue rdf:type owl:DatatypeProperty ;
                rdfs:isDefinedBy <https://saref.etsi.org/core/> ;
                rdfs:label "has value"@en .
 
+###  https://saref.etsi.org/core/hasName
+saref:hasName rdf:type owl:DatatypeProperty ;
+               rdfs:isDefinedBy <https://saref.etsi.org/core/> ;
+               rdfs:label "has name"@en .
+
+###  https://saref.etsi.org/core/hasDescription
+saref:hasDescription rdf:type owl:DatatypeProperty ;
+               rdfs:isDefinedBy <https://saref.etsi.org/core/> ;
+               rdfs:label "has description"@en .
+
 ##  https://saref.etsi.org/saref4city/hasCreationDate
 s4city:hasCreationDate rdf:type owl:DatatypeProperty ;
                        rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
@@ -253,6 +274,11 @@ s4city:hasLastUpdateDate rdf:type owl:DatatypeProperty ;
                          rdfs:isDefinedBy <https://saref.etsi.org/saref4city/> ;
                          rdfs:range xsd:dateTime ;
                          rdfs:label "has last update date"@en .
+
+###  https://w3id.org/def/wsis/isPartOf
+wsis:isPartOf rdf:type owl:ObjectProperty ;
+                  rdfs:isDefinedBy <https://w3id.org/def/wsis/> ;
+                  rdfs:label "isPartOf"@en .
 
 #################################################################
 #    Classes

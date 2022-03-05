@@ -4,5 +4,6 @@ const fs = require('fs')
 const parser = new N3.Parser();
 
 const rdfStream = fs.createReadStream('./wisis.ttl');
+const rdfStreamExample = fs.createReadStream('./examples/ULTIMATE-CS2.ttl');
 
 parser.parse(rdfStream, console.log);
