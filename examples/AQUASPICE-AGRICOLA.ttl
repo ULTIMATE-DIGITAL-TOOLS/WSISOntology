@@ -1,4 +1,4 @@
-@prefix : <https://aquaspice.eu/ontology/> .
+@prefix : <https://w3id.org/def/wsis/examples/aquaspice/agricola/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -15,12 +15,12 @@
 @prefix s4watr: <https://saref.etsi.org/saref4watr/> .
 @prefix om: <http://www.ontology-of-units-of-measure.org/resource/om-2/> .
 @prefix wsis: <https://w3id.org/def/wsis/> .
-@prefix aquaspice: <https://aquaspice.eu/ontolog/> .
-@base <https://aquaspice.eu/ontology/> .
+@prefix aquaspice: <https://w3id.org/def/wsis/examples/aquaspice/agricola/> .
+@base <https://w3id.org/def/wsis/examples/aquaspice/agricola/> .
 
 
 
-<https://aquaspice.eu/ontolog/> rdf:type owl:Ontology ;
+<https://w3id.org/def/wsis/examples/aquaspice/agricola/> rdf:type owl:Ontology ;
                                       dcterms:title "WSIS Ontology Example at industrial level considering AQUASPICE-AGRICOLA Case Study"@en ;
                                       dcterms:description "An example of the usage of the WSIS ontology performed under the AQUASPICE project."@en ;
                                       dcterms:publisher <https://aquaspice.eu/> ;

@@ -15,12 +15,12 @@
 @prefix s4watr: <https://saref.etsi.org/saref4watr/> .
 @prefix om: <http://www.ontology-of-units-of-measure.org/resource/om-2/> .
 @prefix wsis: <https://w3id.org/def/wsis/> .
-@prefix ultimate: <https://ultimatewater.eu/ontology/> .
-@base <https://ultimatewater.eu/ontolog/> .
+@prefix ultimate: <https://w3id.org/def/wsis/examples/ultimate/newPrisceland/> .
+@base <https://w3id.org/def/wsis/examples/ultimate/newPrisceland/> .
 
 
 
-<https://ultimatewater.eu/ontology/> rdf:type owl:Ontology ;
+<https://w3id.org/def/wsis/examples/ultimate/newPrisceland/> rdf:type owl:Ontology ;
                                       dcterms:title "WSIS Ontology Example of CS2 from ULTIMATE project"@en ;
                                       dcterms:description "An example of the usage of the WSIS ontology performed under the ULTIMATE project."@en ;
                                       dcterms:publisher <https://ultimatewater.eu/> ;
