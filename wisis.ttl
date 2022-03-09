@@ -23,9 +23,9 @@
                                       dcterms:publisher <https://ultimatewater.eu/> ;
                                       dcterms:creator "Aitor Corchero";
                                       owl:versionIRI <https://w3id.org/def/wsis/v0.0.1/> ;
-                                      owl:versionInfo "v0.0.1" ;
-                                      dcterms:modified "2021-07-05"^^xsd:date ;
-                                      dcterms:issued "2021-07-05"^^xsd:date ;
+                                      owl:versionInfo "v0.0.2" ;
+                                      dcterms:modified "2022-03-05"^^xsd:date ;
+                                      dcterms:issued "2022-03-05"^^xsd:date ;
                                       dcterms:license <https://opensource.org/licenses/ISC> ;
                                       dcterms:source <https://github.com/ULTIMATE-DIGITAL-TOOLS/ontology> ;
                                       vann:preferredNamespacePrefix "wsis" ;

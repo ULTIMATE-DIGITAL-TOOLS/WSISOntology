@@ -292,7 +292,3 @@ aquaspice:TratedWater rdf:type owl:NamedIndividual ,
                           saref:hasValue "105"^^xsd:float ;
                           saref:isMeasuredIn om:cubicMetre 
                       ] .
-
-
-
-
