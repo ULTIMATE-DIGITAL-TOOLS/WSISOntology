@@ -31,7 +31,7 @@
                                       dcterms:license <https://opensource.org/licenses/ISC> ;
                                       dcterms:source <https://github.com/ULTIMATE-DIGITAL-TOOLS/ontology> ;
                                       vann:preferredNamespacePrefix "aquaspice" ;
-                                      vann:preferredNamespaceUri "https://aquaspice.eu/ontology/" .
+                                      vann:preferredNamespaceUri "https://w3id.org/def/wsis/examples/aquaspice/agricola/" .
 
 #################################################################
 #    Individuals
