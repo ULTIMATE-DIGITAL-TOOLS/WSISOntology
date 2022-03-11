@@ -29,7 +29,7 @@
                                       dcterms:license <https://opensource.org/licenses/ISC> ;
                                       dcterms:source <https://github.com/ULTIMATE-DIGITAL-TOOLS/ontology> ;
                                       vann:preferredNamespacePrefix "wsis" ;
-                                      vann:preferredNamespaceUri "https://w3id.org/def/wsis" .
+                                      vann:preferredNamespaceUri "https://w3id.org/def/wsis/" .
 
 
 #################################################################
